@@ -11,12 +11,15 @@ def welcome():
         print('Enter N to start a new patient file \nPress O to open an existing patient file')
         welcome()
 
-def new_patient():
-    first_name = input('First name: ')
-    last_name = input('Last name: ')
+class Patient(self, fname, lname, phone, pnumber):
+    first_name = fname
+    #last_name = input('Last name: ')
+    last_name = last_name
+    phone = phone
+    pnumber = pnumber
+
     full_name = first_name + ' ' + last_name
 
-    new_note = input('Would you like to begin documenting this case now? [Y/n]: ')
     if new_note == 'Y':
         open_new_patient_file()
         notes = input('{}: '.format(full_name))
@@ -27,6 +30,9 @@ def new_patient():
         print('An empty patient file has been created for {}'.format(full_name))
         welcome()
     return;
+
+new_note = input('Would you like to begin documenting this case now? [Y/n]: ')
+
 
 def open_new_patient_file():
     return;
@@ -42,5 +48,7 @@ def set_name(fname_string, lname_string):
 def add_diagnosis(diag):
     diagnosis = diag
     return;
+
+def patient_file();
 
 welcome()
