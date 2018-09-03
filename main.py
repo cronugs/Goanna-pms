@@ -32,17 +32,40 @@ def main_menu():
         main_menu()
     elif greeting.lower() in ['s', 'search']:
         search_name()
-        main_menu()
+        #main_menu()
     else:
         print('Enter N to start a new patient file \nPress O to open an existing patient file')
         main_menu()
 
 def search_name():
-    search_term = input("Enter a name or patient number: ")
+    entry = []
+    substr = input('enter string: ')
+    try:
+        with open ('patient_list.txt', 'rt') as in_file:
+            for linenum, line in enumerate(in_file):
+                if line.lower().find(substr) != -1:
+                    entry.append((linenum, line.rstrip('\n')))
+                    for linenum, line in entry:
+                        print("Line ", linenum, ": ", line, sep='')
+    except FileNotFoundError:
+        print("Log file not found.")
+    open_file = input('would you like to open this file? [y/n]: ')
+    if open_file == 'y':
+        str1 = ''.join(str(e) for e in entry)
+        clean = str1.replace(" ", "")
+        id = clean[4:-2]
+        PatientFile.open_existing_file(id)
+        main_menu()
+    else:
+        main_menu()
+
+
+
+    '''search_term = input("Enter a name or patient number: ")
     with open("patient_list.txt") as file:
         for line in file:
             line = line.rstrip()  # remove '\n' at end of line
             if search_term == line:
                 print(line)
-
+                '''
 main_menu()

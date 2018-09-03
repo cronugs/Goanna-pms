@@ -6,7 +6,7 @@ class PatientFile:
 
     def create_new_file(patnum, fullname, fname, lname, patrecord):
         date = datetime.date.today()
-        file = open(fname + lname + patnum + '.txt', 'a+')
+        file = open(patnum + fname + lname + '.txt', 'a+')
         file.write('############################################################\n'
         + patrecord + '\n' +
         '############################################################\n\n' + '----------------------------\n'
