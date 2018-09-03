@@ -31,4 +31,6 @@ class Patient:
             myfile.write(self.pat_record + '\n')
             myfile.close()
 
+        
+
         #pat_dict[str(self.fname+self.lname)] = str(self.patnum)

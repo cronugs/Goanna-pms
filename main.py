@@ -31,9 +31,18 @@ def main_menu():
         PatientFile.open_existing_file(id)
         main_menu()
     elif greeting.lower() in ['s', 'search']:
-        print('There is no search implemented yet')
+        search_name()
         main_menu()
     else:
         print('Enter N to start a new patient file \nPress O to open an existing patient file')
         main_menu()
+
+def search_name():
+    search_term = input("Enter a name or patient number: ")
+    with open("patient_list.txt") as file:
+        for line in file:
+            line = line.rstrip()  # remove '\n' at end of line
+            if search_term == line:
+                print(line)
+
 main_menu()

@@ -24,4 +24,3 @@ class PatientFile:
             '----------------\n')
             myfile.write(input('\nNew Entry: '))
             myfile.close()
-            
