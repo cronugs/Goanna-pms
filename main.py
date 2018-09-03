@@ -4,7 +4,7 @@ from classes.patient import Patient
 from classes.patientFile import PatientFile
 import datetime
 
-pat_dict = {}
+pat_dict = {'None':'None'}
 
 def main_menu():
 
@@ -24,6 +24,8 @@ def main_menu():
             temp_pat.getLName(),
             temp_pat.getPatRecord()
             )
+        temp_pat.add_record_library()
+        main_menu()
     elif greeting.lower() in ['o', 'open']:
         id = input('enter first name, last name and patient number as a single string: ')
         PatientFile.open_existing_file(id)
@@ -33,5 +35,5 @@ def main_menu():
         main_menu()
     else:
         print('Enter N to start a new patient file \nPress O to open an existing patient file')
-
+        main_menu()
 main_menu()

@@ -25,3 +25,10 @@ class Patient:
         return self.full_name;
     def getPatRecord(self):
         return self.pat_record;
+
+    def add_record_library(self):
+        with open('patient_list.txt', 'a+') as myfile:
+            myfile.write(self.pat_record + '\n')
+            myfile.close()
+
+        #pat_dict[str(self.fname+self.lname)] = str(self.patnum)
