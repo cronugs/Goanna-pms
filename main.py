@@ -8,6 +8,8 @@ pat_dict = {'None':'None'}
 
 def main_menu():
 
+    ##The main menu
+
     print('\nGoanna PMS - Main menu \n')
     print('(N)ew patient')
     print('(O)pen patient file')
@@ -38,8 +40,16 @@ def main_menu():
         main_menu()
 
 def search_name():
+    ## Takes a string and returns all matching lines from a file of patient names and numbers
+    ## The lines are returned as numbered options
     entry = []
     substr = input('enter string: ')
+    ## Just checking the contents of stuff
+    print('This is the contents of substr: ')
+    substr
+    print('This is the contents of entry: ')
+    entry
+
     try:
         with open ('patient_list.txt', 'rt') as in_file:
             for linenum, line in enumerate(in_file):
