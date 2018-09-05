@@ -3,6 +3,7 @@
 from classes.patient import Patient
 from classes.patientFile import PatientFile
 import datetime
+import sys
 
 pat_dict = {'None':'None'}
 
@@ -12,8 +13,8 @@ def main_menu():
 
     print('\nGoanna PMS - Main menu \n')
     print('(N)ew patient')
-    print('(O)pen patient file')
-    print('(S)earch patient')
+
+    print('(S)earch and open patient file')
     print('(Q)uit \n')
 
     greeting = input('What would you like to do?: ')
@@ -28,27 +29,20 @@ def main_menu():
             )
         temp_pat.add_record_library()
         main_menu()
-    elif greeting.lower() in ['o', 'open']:
-        id = input('enter first name, last name and patient number as a single string: ')
-        PatientFile.open_existing_file(id)
-        main_menu()
     elif greeting.lower() in ['s', 'search']:
-        search_name()
+        search_and_open()
+    elif greeting.lower() in ['q', 'quit']:
+        sys.exit()
         #main_menu()
     else:
         print('Enter N to start a new patient file \nPress O to open an existing patient file')
         main_menu()
 
-def search_name():
+def search_and_open():
     ## Takes a string and returns all matching lines from a file of patient names and numbers
     ## The lines are returned as numbered options
     entry = []
-    substr = input('enter string: ')
-    ## Just checking the contents of stuff
-    print('This is the contents of substr: ')
-    substr
-    print('This is the contents of entry: ')
-    entry
+    substr = input('Enter patient names or number: ')
 
     try:
         with open ('patient_list.txt', 'rt') as in_file:
@@ -56,26 +50,23 @@ def search_name():
                 if line.lower().find(substr) != -1:
                     entry.append((linenum, line.rstrip('\n')))
                     for linenum, line in entry:
-                        print("Line ", linenum, ": ", line, sep='')
+                        print("\nFile ", linenum, ": ", line, sep='')
+                        #print(entry)
     except FileNotFoundError:
         print("Log file not found.")
-    open_file = input('would you like to open this file? [y/n]: ')
-    if open_file == 'y':
-        str1 = ''.join(str(e) for e in entry)
-        clean = str1.replace(" ", "")
-        id = clean[4:-2]
-        PatientFile.open_existing_file(id)
-        main_menu()
-    else:
-        main_menu()
+
+    result_dict = {k:v for k,v in entry} #Convert list of tuples into key:value pairs
+    #print(result_dict)
+    open_file = int(input('\nWhich file would you like to open?: '))
+
+    match = result_dict.get(open_file)
+    #print(match)
+    clean = match.replace(" ", "")
+    with open(clean + '.txt', 'r') as myfile:
+        data = myfile.read()
+    print('\n' + data)
+    PatientFile.open_existing_file(clean)
+    main_menu()
 
 
-
-    '''search_term = input("Enter a name or patient number: ")
-    with open("patient_list.txt") as file:
-        for line in file:
-            line = line.rstrip()  # remove '\n' at end of line
-            if search_term == line:
-                print(line)
-                '''
 main_menu()

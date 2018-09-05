@@ -9,7 +9,7 @@ class Patient:
         self.full_name = self.fname + ' ' + self.lname
         self.pat_record = self.patnum + ' ' + self.full_name
         print('\nNew patient number generated: ' + self.patnum)
-        print('New patient entry recorded: ' + self.pat_record)
+        print('\nNew patient entry recorded: ' + self.pat_record)
 
     def getFName(self):
         return self.fname;
@@ -31,6 +31,6 @@ class Patient:
             myfile.write(self.pat_record + '\n')
             myfile.close()
 
-        
+
 
         #pat_dict[str(self.fname+self.lname)] = str(self.patnum)
