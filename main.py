@@ -13,7 +13,6 @@ def main_menu():
 
     print('\nGoanna PMS - Main menu \n')
     print('(N)ew patient')
-
     print('(S)earch and open patient file')
     print('(Q)uit \n')
 
