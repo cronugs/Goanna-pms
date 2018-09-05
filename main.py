@@ -1,4 +1,5 @@
 #Goanna PMS
+#The goanna patient management system
 
 from classes.patient import Patient
 from classes.patientFile import PatientFile
