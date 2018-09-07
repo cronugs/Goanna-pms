@@ -1,17 +1,19 @@
 import datetime
+from classes.patient import Patient
 
 class PatientFile:
     def __init__(self):
         return;
 
-    def create_new_file(patnum, fullname, fname, lname, patrecord):
+    def create_new_file(patnum, fullname, fname, lname, patrecord, phone, pernum):
         date = datetime.date.today()
         file = open(patnum + fname + lname + '.txt', 'a+')
         file.write('############################################################\n'
         + patrecord + '\n' +
-        '############################################################\n\n' + '----------------------------\n'
+        '############################################################\n\n' +
+        'Phone: ' + phone + '\n' + 'Personnummer: ' + pernum + '\n' + '\n' + '----------------------------\n'
         + str(date) + ' First Appointment''\n' +
-        '----------------------------\n')
+        '----------------------------' + '\n')
 
         file.write(input('\nNew Entry: '))
         file.close()

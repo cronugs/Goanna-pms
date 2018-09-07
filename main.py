@@ -25,7 +25,9 @@ def main_menu():
             temp_pat.getFullName(),
             temp_pat.getFName(),
             temp_pat.getLName(),
-            temp_pat.getPatRecord()
+            temp_pat.getPatRecord(),
+            temp_pat.getPhone(),
+            temp_pat.getPernum()
             )
         temp_pat.add_record_library()
         main_menu()
@@ -53,7 +55,7 @@ def search_and_open():
                         print("\nFile ", linenum, ": ", line, sep='')
                         #print(entry)
     except FileNotFoundError:
-        print("Log file not found.")
+        print("Patient file not found.")
 
     result_dict = {k:v for k,v in entry} #Convert list of tuples into key:value pairs
     #print(result_dict)
